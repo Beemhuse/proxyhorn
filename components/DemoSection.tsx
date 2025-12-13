@@ -1,6 +1,6 @@
+'use client'
 import React, { useState, useRef } from 'react';
 import { Upload, Play, FileText, CheckCircle, Loader2, Sparkles, Wand2 } from 'lucide-react';
-import { optimizeText, transcribeAudio } from '../services/geminiService';
 
 const DemoSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'transcribe' | 'optimize'>('transcribe');
@@ -11,51 +11,51 @@ const DemoSection: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // For audio demo
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  // const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (!file) return;
 
-    if (file.size > 2 * 1024 * 1024) { // 2MB limit for demo
-      alert("Demo limit: Please upload an audio file smaller than 2MB.");
-      return;
-    }
+  //   if (file.size > 2 * 1024 * 1024) { // 2MB limit for demo
+  //     alert("Demo limit: Please upload an audio file smaller than 2MB.");
+  //     return;
+  //   }
 
-    setFileName(file.name);
-    setLoading(true);
-    setResult('');
+  //   setFileName(file.name);
+  //   setLoading(true);
+  //   setResult('');
 
-    try {
-      const reader = new FileReader();
-      reader.onloadend = async () => {
-        const base64String = (reader.result as string).split(',')[1];
-        const res = await transcribeAudio(base64String, file.type);
-        if (res.success) {
-          setResult(res.text);
-          setInputText(res.text); // Pre-fill optimize tab
-        } else {
-          setResult(`Error: ${res.error}`);
-        }
-        setLoading(false);
-      };
-      reader.readAsDataURL(file);
-    } catch (err) {
-      setResult("Failed to process file.");
-      setLoading(false);
-    }
-  };
+  //   try {
+  //     const reader = new FileReader();
+  //     reader.onloadend = async () => {
+  //       const base64String = (reader.result as string).split(',')[1];
+  //       const res = await transcribeAudio(base64String, file.type);
+  //       if (res.success) {
+  //         setResult(res.text);
+  //         setInputText(res.text); // Pre-fill optimize tab
+  //       } else {
+  //         setResult(`Error: ${res.error}`);
+  //       }
+  //       setLoading(false);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   } catch (err) {
+  //     setResult("Failed to process file.");
+  //     setLoading(false);
+  //   }
+  // };
 
   // For text optimization demo
-  const handleOptimize = async (mode: 'summary' | 'action_items' | 'blog_post') => {
-    if (!inputText) return;
-    setLoading(true);
-    const res = await optimizeText({ text: inputText, mode });
-    if (res.success) {
-      setResult(res.text);
-    } else {
-      setResult(`Error: ${res.error}`);
-    }
-    setLoading(false);
-  };
+  // const handleOptimize = async (mode: 'summary' | 'action_items' | 'blog_post') => {
+  //   if (!inputText) return;
+  //   setLoading(true);
+  //   const res = await optimizeText({ text: inputText, mode });
+  //   if (res.success) {
+  //     setResult(res.text);
+  //   } else {
+  //     setResult(`Error: ${res.error}`);
+  //   }
+  //   setLoading(false);
+  // };
 
   return (
     <section id="demo" className="py-24 relative overflow-hidden bg-dark-800">
@@ -99,7 +99,7 @@ const DemoSection: React.FC = () => {
                     <input 
                       type="file" 
                       ref={fileInputRef}
-                      onChange={handleFileChange} 
+                      // onChange={handleFileChange} 
                       accept="audio/*"
                       className="hidden" 
                     />
@@ -135,21 +135,21 @@ const DemoSection: React.FC = () => {
                   </div>
                   <div className="flex flex-wrap gap-3">
                     <button 
-                      onClick={() => handleOptimize('summary')}
+                      // onClick={() => handleOptimize('summary')}
                       disabled={loading || !inputText}
                       className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-neon-purple/50 text-sm font-medium text-gray-300 flex items-center gap-2 transition-all disabled:opacity-50"
                     >
                       <FileText className="w-4 h-4" /> Summarize
                     </button>
                     <button 
-                      onClick={() => handleOptimize('action_items')}
+                      // onClick={() => handleOptimize('action_items')}
                       disabled={loading || !inputText}
                       className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-neon-purple/50 text-sm font-medium text-gray-300 flex items-center gap-2 transition-all disabled:opacity-50"
                     >
                       <CheckCircle className="w-4 h-4" /> Action Items
                     </button>
                     <button 
-                      onClick={() => handleOptimize('blog_post')}
+                      // onClick={() => handleOptimize('blog_post')}
                       disabled={loading || !inputText}
                       className="px-4 py-2 rounded-lg bg-gradient-to-r from-neon-purple to-pink-500 text-white text-sm font-bold flex items-center gap-2 hover:shadow-lg transition-all disabled:opacity-50"
                     >
