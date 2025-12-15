@@ -1,5 +1,6 @@
 import React from 'react';
 import { UploadCloud, Sparkles, FileCheck, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const steps = [
   {
@@ -55,9 +56,9 @@ const HowItWorks: React.FC = () => {
         </div>
 
         <div className="mt-16 text-center">
-           <a href="#pricing" className="inline-flex items-center text-neon-blue font-bold hover:text-white transition-colors">
+           <Link href="https:app.proxyhorn.com" className="inline-flex items-center text-neon-blue font-bold hover:text-white transition-colors">
              Start your first transcription <ArrowRight className="ml-2 w-4 h-4" />
-           </a>
+           </Link>
         </div>
       </div>
     </section>

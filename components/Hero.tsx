@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Mic, FileText, Zap, Play } from 'lucide-react';
+import Link from 'next/link';
 
 const Hero: React.FC = () => {
   return (
@@ -27,20 +28,20 @@ const Hero: React.FC = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
+          <Link
             href="#pricing"
             className="group relative inline-flex items-center justify-center px-8 py-3 text-base font-bold text-white transition-all duration-200 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full hover:shadow-[0_0_20px_rgba(188,19,254,0.5)] hover:scale-105"
           >
             Start Creating Free
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </a>
-          <a
+          </Link>
+          <Link
             href="#how-it-works"
             className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-gray-300 transition-all duration-200 glass-card rounded-full hover:bg-white/5 hover:text-white border border-white/5 hover:border-white/20"
           >
             <Play className="mr-2 w-4 h-4 fill-current" />
             See How It Works
-          </a>
+          </Link>
         </div>
 
         {/* Floating Icons Visualization */}
@@ -55,7 +56,7 @@ const Hero: React.FC = () => {
              <FileText className="w-8 h-8 text-pink-500" />
            </div>
            
-           <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+           <div className="absolute top-1/2 left-0 w-full h-px bg-linear-to-r from-transparent via-white/10 to-transparent"></div>
         </div>
       </div>
     </section>

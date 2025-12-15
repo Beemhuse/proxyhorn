@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { NavItem } from '@/types';
+import Link from 'next/link';
 
 const navItems: NavItem[] = [
   { label: 'Features', href: '#features' },
@@ -14,12 +15,12 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full z-50 top-0 left-0 border-b border-white/5 bg-[#0a0a0f]/80 backdrop-blur-md">
+    <nav className="fixed w-full z-50 top-0 left-0 border-b border-white/5 bg-dark-900/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
             <a href="#" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-blue to-neon-purple flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(0,243,255,0.5)] transition-shadow">
+              <div className="w-8 h-8 rounded-lg bg-linear-to-br from-neon-blue to-neon-purple flex items-center justify-center group-hover:shadow-[0_0_15px_rgba(0,243,255,0.5)] transition-shadow">
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
               <span className="font-display font-bold text-2xl tracking-tight text-white">
@@ -43,9 +44,9 @@ const Navbar: React.FC = () => {
           </div>
           
           <div className="hidden md:block">
-            <a href="#pricing" className="bg-white/10 hover:bg-white/20 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all border border-white/10 hover:border-neon-blue/50">
+            <Link href="https://app.proxyhorn.com" className="bg-white/10 hover:bg-white/20 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all border border-white/10 hover:border-neon-blue/50">
               Get Started
-            </a>
+            </Link>
           </div>
 
           <div className="-mr-2 flex md:hidden">
@@ -60,21 +61,21 @@ const Navbar: React.FC = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-[#0a0a0f] border-b border-white/10">
+        <div className="md:hidden bg-dark-900 border-b border-white/10">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
-            <a href="#pricing" className="block w-full text-left px-3 py-2 text-neon-blue font-bold">
+            <Link href="#pricing" className="block w-full text-left px-3 py-2 text-neon-blue font-bold">
               Get Started
-            </a>
+            </Link>
           </div>
         </div>
       )}
