@@ -2,32 +2,58 @@ import React from 'react';
 import { Check } from 'lucide-react';
 import { PricingPlan } from '../types';
 
-const plans: PricingPlan[] = [
-  {
-    name: 'Starter',
-    price: '$0',
-    description: 'Perfect for individuals and quick tasks.',
-    features: ['60 mins transcription/month', 'Standard Accuracy', 'MP3 & WAV support', '1 User'],
-    cta: 'Start for Free',
-  },
-  {
-    name: 'Creator Pro',
-    price: '$29',
-    period: '/mo',
-    description: 'For content creators and professionals.',
-    features: ['Unlimited transcription', 'Smart Optimization (Blog/Summary)', 'Multi-speaker identification', 'Priority Support', '4k Video Export'],
-    cta: 'Get Started',
+ const plans: PricingPlan[] = [
+    {
+      name: "Free",
+      price: "$0",
+      description: "Basic transcription for occasional use",
+      features: [
+        "5 hours of transcription per month",
+        "2 languages supported",
+        "Basic punctuation & formatting",
+        "Standard accuracy",
+        "24 hour support",
+      ],
+      highlighted: false,
+      cta: "Get Started",
+    },
+    {
+      name: "Creator Pro",
+      price: "$12",
+      period: "per month",
+      description: "Advanced features for regular users",
+      features: [
+        "25 hours of transcription per month",
+        "10 languages supported",
+        "Advanced punctuation & formatting",
+        "Speaker identification",
+        "Timestamping",
+        "Enhanced accuracy",
+        "Priority support",
+      ],
     highlighted: true,
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    description: 'For large teams and organizations.',
-    features: ['API Access', 'SSO & Advanced Security', 'Custom AI Models', 'Dedicated Account Manager', 'SLA Guarantees'],
-    cta: 'Contact Sales',
-  },
-];
-
+      cta: "Start Free Trial",
+    },
+    {
+      name: "Enterprise",
+      price: "$49",
+      period: "per month",
+      description: "Maximum power for professionals",
+      features: [
+        "Unlimited transcription",
+        "All languages supported",
+        "Premium formatting & punctuation",
+        "Advanced speaker identification",
+        "Precise timestamping",
+        "Maximum accuracy with AI enhancement",
+        "Noise reduction",
+        "24/7 dedicated support",
+        "Custom API access",
+      ],
+      highlighted: false,
+      cta: "Contact Sales",
+    },
+  ];
 const Pricing: React.FC = () => {
   return (
     <section id="pricing" className="py-24 bg-dark-900 relative">
